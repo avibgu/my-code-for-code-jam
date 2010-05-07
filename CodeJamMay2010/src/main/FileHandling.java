@@ -2,11 +2,13 @@ package main;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+
+import java.util.Vector;
 
 import exception.AbortException;
 import exception.GiveUpException;
@@ -29,9 +31,9 @@ public class FileHandling {
 	 *
 	 * @throws GiveUpException when we give up with this process
 	 */
-	public FileInputStream openFileForReading(String tFilename) throws GiveUpException {
+	public FileReader openFileForReading(String tFilename) throws GiveUpException {
 
-		FileInputStream file = null;
+		FileReader file = null;
 
 		while (true) {
 
@@ -43,7 +45,7 @@ public class FileHandling {
 
 				try {
 
-					file = new FileInputStream( new File(tFilename) );
+					file = new FileReader( tFilename );
 
 					return file;
 				}
@@ -149,5 +151,22 @@ public class FileHandling {
 	private void reportGiveUp(){
 
 		System.out.println("give up");
+	}
+	
+	public Vector<String> readLinesFromFile(FileReader file) throws IOException{
+
+		Vector<String> result = new Vector<String>(); 
+
+		BufferedReader br = new BufferedReader( file );
+
+		String thisLine;
+			
+		while ( ( thisLine = br.readLine() ) != null ) {
+
+			System.out.println(thisLine);
+			result.add(thisLine);
+		}
+		
+		return result;
 	}
 }

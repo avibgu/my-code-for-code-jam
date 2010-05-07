@@ -1,31 +1,53 @@
 package main;
 
-import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Vector;
 
 import exception.GiveUpException;
-
 
 public class Main {
 
 	public static void main(String[] args){
 
-		FileHandling fh = new FileHandling();
-		FileInputStream file = null;
-
+		String inputFilename = "A-small.in";
+		String outputFilename = "A-small.out";
+		
+		String output = "";
+		
+		FileHandling filesHandler = new FileHandling();
+		
+		FileReader file = null;
+		
+		Vector<String> inputVector = null;
+		
 		try {
-
-			file = fh.openFileForReading(args[0]);
-
-			String toWrite = "";
-
-			fh.writeToFile("output,txt" , toWrite);
-
-			System.out.println(toWrite);
-
+			
+			file = filesHandler.openFileForReading( inputFilename );
+			inputVector = filesHandler.readLinesFromFile( file );
 		}
-		catch (GiveUpException e) {
+		catch (GiveUpException e) { System.out.println("exiting.."); }
+		catch (IOException e) { System.out.println("error while reading.."); }
+		
+//---------------| Place Code Here |-------------------------		
 
-			System.out.println("exiting..");
+		output = QualificationRound_A( inputVector );
+		
+//-----------------| End of Code |---------------------------		
+		
+		try {
+			
+			filesHandler.writeToFile(outputFilename, output);
+			System.out.println("\n----------------------------------\n");
+			System.out.println( output );
 		}
+		catch (GiveUpException e) { System.out.println("error while writing.."); }
+	}
+	
+	
+
+	private static String QualificationRound_A( Vector<String> inputVector ) {
+
+		return "";
 	}
 }
