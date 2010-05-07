@@ -32,6 +32,8 @@ public class Main {
 //---------------| Place Code Here |-------------------------		
 
 		output = QualificationRound_A( inputVector );
+//		output = QualificationRound_B( inputVector );
+//		output = QualificationRound_C( inputVector );
 		
 //-----------------| End of Code |---------------------------		
 		
@@ -44,10 +46,22 @@ public class Main {
 		catch (GiveUpException e) { System.out.println("error while writing.."); }
 	}
 	
-	
 
 	private static String QualificationRound_A( Vector<String> inputVector ) {
 
 		return "";
 	}
+	
+	
+	private static String QualificationRound_B( Vector<String> inputVector ) {
+
+		return "";
+	}
+	
+	
+	private static String QualificationRound_C( Vector<String> inputVector ) {
+
+		return "";
+	}
+
 }
