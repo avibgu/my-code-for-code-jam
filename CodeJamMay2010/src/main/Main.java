@@ -2,6 +2,7 @@ package main;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Vector;
 
 import exception.GiveUpException;
@@ -32,8 +33,8 @@ public class Main {
 //---------------| Place Code Here |-------------------------		
 
 //		output = QualificationRound_A( inputVector );
-//		output = QualificationRound_B( inputVector );
-		output = QualificationRound_C( inputVector );
+		output = QualificationRound_B( inputVector );
+//		output = QualificationRound_C( inputVector );
 		
 //-----------------| End of Code |---------------------------	
 		
@@ -57,27 +58,27 @@ public class Main {
 			
 			String[] NandK = inputVector.get(i).split(" ");
 			
-			double N = Integer.valueOf( NandK[0] );
-			double K = Integer.valueOf( NandK[1] );
+			double N = Double.valueOf( NandK[0] );
+			double K = Double.valueOf( NandK[1] );
 
-			double onAt = Math.pow( 2, N) - 1;
+			double firstOn = Math.pow( 2, N) - 1;
+			double nextOn = firstOn + 1;
 			
-			if (K < onAt){
-				
-				output = output + "Case #" + i + ": OFF\n";
-			}
-			
-			else if ( ( (K - onAt) % 2) == 0){
+			if (K == firstOn){
 				
 				output = output + "Case #" + i + ": ON\n";
 			}
+			else if ( (K > firstOn) && ( (K-firstOn) % nextOn) == 0){
+				
+				output = output + "Case #" + i + ": ON\n";
+			} 
 			else{
 				
 				output = output + "Case #" + i + ": OFF\n";
 			}
 		}
 		
-		return output.substring(0, output.length() - 1);
+		return output;
 	}
 	
 	
@@ -139,7 +140,7 @@ public class Main {
 		
 		int T = Integer.valueOf( inputVector.get(0) );
 		
-		for (int i=1; i <= T; i=i+2){
+		for (int i=1; i <= T*2; i=i+2){
 			
 			String[] RkN = inputVector.get(i).split(" ");
 
@@ -149,9 +150,34 @@ public class Main {
 			
 			String[] G = inputVector.get( i+1 ).split(" ");
 			
+			LinkedList<Integer> queue = new LinkedList<Integer>();
+			LinkedList<Integer> tempQueue = new LinkedList<Integer>();
+			
+			for(int j=0; j < N; j++) queue.add( Integer.valueOf( G[j] ) );
+			
 			int EURO = 0;
 			
-			output += "Case #" + i + ": " + EURO;
+			for(int r=1; r <= R; r++){
+				
+				int howManyOnBorad = 0;
+				
+				while( !queue.isEmpty() && (howManyOnBorad < k) ){
+					
+					if( howManyOnBorad + queue.peek() > k ) break;
+					
+					else{
+						
+						howManyOnBorad += queue.peek();
+						tempQueue.add( queue.remove() );
+					}
+				}
+				
+				while( !tempQueue.isEmpty() ) queue.add( tempQueue.remove() );
+				
+				EURO += howManyOnBorad;
+			}
+			
+			output += "Case #" + ((int)i/2+1) + ": " + EURO + "\n";
 		}
 		
 		return output;
