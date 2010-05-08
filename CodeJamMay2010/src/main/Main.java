@@ -32,8 +32,8 @@ public class Main {
 //---------------| Place Code Here |-------------------------		
 
 //		output = QualificationRound_A( inputVector );
-		output = QualificationRound_B( inputVector );
-//		output = QualificationRound_C( inputVector );
+//		output = QualificationRound_B( inputVector );
+		output = QualificationRound_C( inputVector );
 		
 //-----------------| End of Code |---------------------------	
 		
@@ -49,7 +49,7 @@ public class Main {
 
 	private static String QualificationRound_A( Vector<String> inputVector ) {
 
-		String output ="";
+		String output = "";
 		
 		int T = Integer.valueOf( inputVector.get(0) );
 		
@@ -57,10 +57,10 @@ public class Main {
 			
 			String[] NandK = inputVector.get(i).split(" ");
 			
-			int N = Integer.valueOf( NandK[0] );
-			int K = Integer.valueOf( NandK[1] );
+			double N = Integer.valueOf( NandK[0] );
+			double K = Integer.valueOf( NandK[1] );
 
-			int onAt = 2*N - 1;
+			double onAt = Math.pow( 2, N) - 1;
 			
 			if (K < onAt){
 				
@@ -83,7 +83,7 @@ public class Main {
 	
 	private static String QualificationRound_B( Vector<String> inputVector ) {
 
-		String output ="";
+		String output = "";
 		
 		int C = Integer.valueOf( inputVector.get(0) );
 		
@@ -135,7 +135,26 @@ public class Main {
 	
 	private static String QualificationRound_C( Vector<String> inputVector ) {
 
-		return "";
+		String output = "";
+		
+		int T = Integer.valueOf( inputVector.get(0) );
+		
+		for (int i=1; i <= T; i=i+2){
+			
+			String[] RkN = inputVector.get(i).split(" ");
+
+			int R = Integer.valueOf( RkN[0] );
+			int k = Integer.valueOf( RkN[1] );
+			int N = Integer.valueOf( RkN[2] );
+			
+			String[] G = inputVector.get( i+1 ).split(" ");
+			
+			int EURO = 0;
+			
+			output += "Case #" + i + ": " + EURO;
+		}
+		
+		return output;
 	}
 
 }
