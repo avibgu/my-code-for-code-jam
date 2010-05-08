@@ -33,8 +33,14 @@ public class Main {
 //---------------| Place Code Here |-------------------------		
 
 //		output = QualificationRound_A( inputVector );
-		output = QualificationRound_B( inputVector );
+//		output = QualificationRound_B( inputVector );
 //		output = QualificationRound_C( inputVector );
+		
+		
+		Num x = new Num("1457");
+		Num y = new Num("168");
+		
+		System.out.println( x + " - " + y + " = " + x.pahot(y) );
 		
 //-----------------| End of Code |---------------------------	
 		
