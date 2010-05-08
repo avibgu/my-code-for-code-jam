@@ -35,7 +35,7 @@ public class Main {
 		output = QualificationRound_B( inputVector );
 //		output = QualificationRound_C( inputVector );
 		
-//-----------------| End of Code |---------------------------		
+//-----------------| End of Code |---------------------------	
 		
 		try {
 			
@@ -93,40 +93,40 @@ public class Main {
 			
 			int N = Integer.valueOf( splitted[0] );
 			
-			long originalMin = Long.valueOf( splitted[1] );
+			Num originalMin = new Num( splitted[1] );
 			
 			for (int j=2; j <= N; j++){
 				
-				long temp = Long.valueOf( splitted[j] );
+				Num temp = new Num( splitted[j] );
 				
-				if ( originalMin > temp )
+				if ( originalMin.biggerThan( temp ) )
 					originalMin = temp;
 			}
 			
-			long hefreshMin = Long.MAX_VALUE;
+			Num hefreshMin = new Num( splitted[1] ).pahot( new Num( splitted[2] ) );
 			
 			for (int j=1; j <= N-1; j++){
 				
 				for (int k=j+1; k <= N; k++){
 					
-					long x = Long.valueOf( splitted[j] );
-					long y = Long.valueOf( splitted[k] );
+					Num x = new Num( splitted[j] );
+					Num y = new Num( splitted[k] );
 					
-					long temp = Math.abs( x-y );
+					Num temp = x.pahot( y );
 					
-					if ( hefreshMin > temp )
+					if ( hefreshMin.biggerThan(temp) )
 						hefreshMin = temp;
 				}
 			}
 			
-			long x = hefreshMin;
+			Num x = hefreshMin;
 			
-			while ( hefreshMin < originalMin ){
+			while ( originalMin.biggerThan( hefreshMin ) ){
 				
-				hefreshMin += x;
+				hefreshMin.plus( x );
 			}
 			
-			output += "Case #" + i + ": " + (hefreshMin-originalMin)+ "\n";
+			output += "Case #" + i + ": " + ( hefreshMin.pahot( originalMin ) )+ "\n";
 		}
 		
 		return output;
