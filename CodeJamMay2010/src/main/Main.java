@@ -36,11 +36,10 @@ public class Main {
 //		output = QualificationRound_B( inputVector );
 //		output = QualificationRound_C( inputVector );
 		
-		
-		Num x = new Num("1457");
-		Num y = new Num("168");
-		
-		System.out.println( x + " - " + y + " = " + x.pahot(y) );
+		output = Round1_A( inputVector );
+//		output = Round1_B( inputVector );
+//		output = Round1_C( inputVector );
+
 		
 //-----------------| End of Code |---------------------------	
 		
@@ -53,6 +52,33 @@ public class Main {
 		catch (GiveUpException e) { System.out.println("error while writing.."); }
 	}
 	
+
+	private static String Round1_A(Vector<String> inputVector) {
+
+		String output = "";
+		
+		int T = Integer.valueOf( inputVector.get(0) );
+		
+		for (int i=1; i <= T; i++){
+
+			output = output + "Case #" + i + ": OFF\n";
+		}
+		
+		return output;
+	}
+	
+
+	private static String Round1_B(Vector<String> inputVector) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	private static String Round1_C(Vector<String> inputVector) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	private static String QualificationRound_A( Vector<String> inputVector ) {
 
