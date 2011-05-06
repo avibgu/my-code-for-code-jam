@@ -26,8 +26,8 @@ public class Main {
 			file = filesHandler.openFileForReading( inputFilename );
 			inputVector = filesHandler.readLinesFromFile( file );
 		}
-		catch (GiveUpException e) { System.out.println("exiting.."); }
-		catch (IOException e) { System.out.println("error while reading.."); }
+		catch (GiveUpException e) { System.err.println("exiting.."); }
+		catch (IOException e) { System.err.println("error while reading.."); }
 		
 //---------------| Place Code Here |-------------------------		
 
@@ -50,7 +50,7 @@ public class Main {
 			System.out.println("\n----------------------------------\n");
 			System.out.println( output );
 		}
-		catch (GiveUpException e) { System.out.println("error while writing.."); }
+		catch (GiveUpException e) { System.err.println("error while writing.."); }
 	}
 	
 
