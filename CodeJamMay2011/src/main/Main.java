@@ -8,6 +8,10 @@ import exception.GiveUpException;
 
 public class Main {
 
+	/**
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args){
 
 		String inputFilename = "in.txt";
@@ -31,9 +35,9 @@ public class Main {
 		
 //---------------| Place Code Here |-------------------------		
 
-		output = Practice( inputVector );
+//		output = Practice( inputVector );
 		
-//		output = QualificationRound_A( inputVector );
+		output = QualificationRound_A( inputVector );
 //		output = QualificationRound_B( inputVector );
 //		output = QualificationRound_C( inputVector );
 		
@@ -53,8 +57,22 @@ public class Main {
 		catch (GiveUpException e) { System.err.println("error while writing.."); }
 	}
 	
-
+	/**
+	 * 
+	 * @param inputVector
+	 * @return
+	 */
 	private static String Practice(Vector<String> inputVector) {
+		
+		return "";
+	}
+	
+	/**
+	 * 
+	 * @param inputVector
+	 * @return
+	 */
+	private static String QualificationRound_A(Vector<String> inputVector) {
 		
 		String output = "";
 		
