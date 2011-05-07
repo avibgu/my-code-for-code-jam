@@ -128,7 +128,7 @@ public class Main {
 			
 			String series = sLine[sLine.length-1];
 			
-			String[] ans = Magicka.calc();
+			String[] ans = Magicka.calc(Cs, Ds, N, series);
 			
 			String out = "[";
 			
