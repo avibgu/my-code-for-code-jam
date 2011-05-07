@@ -4,6 +4,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Vector;
 
+import qualificationRound.BotTrust;
+import qualificationRound.Magicka;
+
 import exception.GiveUpException;
 
 public class Main {
@@ -37,8 +40,8 @@ public class Main {
 
 //		output = Practice( inputVector );
 		
-		output = QualificationRound_A( inputVector );
-//		output = QualificationRound_B( inputVector );
+//		output = QualificationRound_A( inputVector );
+		output = QualificationRound_B( inputVector );
 //		output = QualificationRound_C( inputVector );
 		
 //		output = Round1_A( inputVector );
@@ -80,26 +83,61 @@ public class Main {
 		
 		for (int i=1; i <= T; i++){
 			
-			String[] NandK = inputVector.get(i).split(" ");
+			String[] sLine = inputVector.get(i).split(" ");
 			
-			double N = Double.valueOf( NandK[0] );
-			double K = Double.valueOf( NandK[1] );
+			int N = Integer.parseInt( sLine[0] );
 
-			double firstOn = Math.pow( 2, N) - 1;
-			double nextOn = firstOn + 1;
+			int seconds = BotTrust.calcSeconds(N, sLine);
 			
-			if (K == firstOn){
-				
-				output = output + "Case #" + i + ": ON\n";
-			}
-			else if ( (K > firstOn) && ( (K-firstOn) % nextOn) == 0){
-				
-				output = output + "Case #" + i + ": ON\n";
-			} 
-			else{
-				
-				output = output + "Case #" + i + ": OFF\n";
-			}
+			output = output + "Case #" + i + ": " + seconds + "\n";
+		}
+		
+		return output;
+	}
+	
+	/**
+	 * 
+	 * @param inputVector
+	 * @return
+	 */
+	private static String QualificationRound_B(Vector<String> inputVector) {
+		
+		String output = "";
+		
+		int T = Integer.valueOf( inputVector.get(0) );
+		
+		for (int i=1; i <= T; i++){
+			
+			String[] sLine = inputVector.get(i).split(" ");
+			
+			int C = Integer.parseInt( sLine[0] );
+			
+			String[] Cs = new String[C];
+			
+			for (int j=0; j < C; j++)
+				Cs[j] = sLine[j+1];
+			
+			int D = Integer.parseInt( sLine[C+1] );
+
+			String[] Ds = new String[D];
+			
+			for (int j=0; j < D; j++)
+				Ds[j] = sLine[j+C+2];
+			
+			int N = Integer.parseInt( sLine[C+D+2] );
+			
+			String series = sLine[sLine.length-1];
+			
+			String[] ans = Magicka.calc();
+			
+			String out = "[";
+			
+			for (String s: ans)
+				out += s + ", ";
+			
+			out = out.substring(0, out.length()-3) + "]";
+			
+			output = output + "Case #" + i + ": " + out + "\n";
 		}
 		
 		return output;
