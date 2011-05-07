@@ -130,12 +130,17 @@ public class Main {
 			
 			String[] ans = Magicka.calc(Cs, Ds, N, series);
 			
+			if (ans.length == 0){
+				output = output + "Case #" + i + ": []\n";
+				continue;
+			}
+
 			String out = "[";
 			
 			for (String s: ans)
 				out += s + ", ";
 			
-			out = out.substring(0, out.length()-3) + "]";
+			out = out.substring(0, out.length()-2) + "]";
 			
 			output = output + "Case #" + i + ": " + out + "\n";
 		}

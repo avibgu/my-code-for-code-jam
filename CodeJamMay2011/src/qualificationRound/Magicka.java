@@ -96,8 +96,6 @@ public class Magicka {
 			ans[i] = String.valueOf(chars[i]);
 		}
 		
-		System.out.println(series);
-		
 		return ans;
 	}
 }
