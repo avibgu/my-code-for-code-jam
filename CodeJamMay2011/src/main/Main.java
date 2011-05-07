@@ -17,8 +17,8 @@ public class Main {
 	 */
 	public static void main(String[] args){
 
-		String inputFilename = "in.txt";
-		String outputFilename = "out.txt";
+		String inputFilename = "B-small-attempt1.in";
+		String outputFilename = "B-small-attempt1.out";
 		
 		String output = "";
 		
