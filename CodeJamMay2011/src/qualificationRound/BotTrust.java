@@ -9,8 +9,6 @@ public class BotTrust {
 		int orangeStepTime = 0;
 		int blueIdx = 1;
 		int orangeIdx = 1;
-		int orangeBuf = 0;
-		int blueBuf = 0;
 		
 		for (int j=1; j <= n*2; j+=2){
 			
@@ -19,33 +17,31 @@ public class BotTrust {
 
 			if (Rj.equals("B")){
 				
-				blueStepTime += Math.abs(blueIdx - Pj) + 1 ;//- blueBuf;
+				blueStepTime += Math.abs(blueIdx - Pj) + 1 ;
 				
 				blueIdx = Pj;
 				
-				if ( blueStepTime > orangeStepTime ){
+				if ( blueStepTime <= orangeStepTime ){
 					
-					orangeStepTime = 0;
+					seconds += orangeStepTime + 1;	
+					blueStepTime = 0;
 				}
-//				else
-//					blueBuf++;
-//				
-//				orangeBuf = 0;
+				
+				orangeStepTime = 0;
 			}
 			else{
 				
-				orangeStepTime += Math.abs(orangeIdx - Pj) + 1 ;//- orangeBuf;
+				orangeStepTime += Math.abs(orangeIdx - Pj) + 1 ;
 				
 				orangeIdx = Pj;
 				
-				if ( orangeStepTime > blueStepTime ){
+				if ( orangeStepTime <= blueStepTime ){
 					
-					blueStepTime = 0;
+					seconds += blueStepTime + 1;
+					orangeStepTime = 0;
 				}
-//				else
-//					orangeBuf++;
-//				
-//				blueBuf = 0;
+				
+				blueStepTime = 0;	
 			}
 		}
 		
