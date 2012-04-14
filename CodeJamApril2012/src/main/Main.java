@@ -4,7 +4,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Vector;
 
-import qualificationRound.BotTrust;
+import qualificationRound.Dancing;
+import qualificationRound.Googlerese;
+import qualificationRound.Recycled;
 
 import exception.GiveUpException;
 
@@ -16,8 +18,8 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 
-		String inputFilename = "B-small-attempt1.in";
-		String outputFilename = "B-small-attempt1.out";
+		String inputFilename = "input.in";
+		String outputFilename = "output.out";
 
 		String output = "";
 
@@ -41,7 +43,11 @@ public class Main {
 
 		// output = Practice( inputVector );
 
-		output = QualificationRound_A(inputVector);
+		// output = QualificationRound_A(inputVector);
+
+		output = QualificationRound_B(inputVector);
+
+		// output = QualificationRound_C(inputVector);
 
 		// -----------------| End of Code |---------------------------
 
@@ -55,11 +61,6 @@ public class Main {
 		}
 	}
 
-	/**
-	 * 
-	 * @param pInputVector
-	 * @return
-	 */
 	private static String QualificationRound_A(Vector<String> pInputVector) {
 
 		String output = "";
@@ -68,13 +69,57 @@ public class Main {
 
 		for (int i = 1; i <= T; i++) {
 
-			String[] sLine = pInputVector.get(i).split(" ");
+			String result = Googlerese.translate(pInputVector.get(i));
 
-			int N = Integer.parseInt(sLine[0]);
+			output = output + "Case #" + i + ": " + result + "\n";
+		}
 
-			int seconds = BotTrust.calcSeconds(N, sLine);
+		return output;
+	}
 
-			output = output + "Case #" + i + ": " + seconds + "\n";
+	private static String QualificationRound_B(Vector<String> pInputVector) {
+
+		String output = "";
+
+		int T = Integer.valueOf(pInputVector.get(0));
+
+		for (int i = 1; i <= T; i++) {
+
+			String line[] = pInputVector.get(i).split(" ");
+
+			int N = Integer.parseInt(line[0]);
+			int S = Integer.parseInt(line[1]);
+			int P = Integer.parseInt(line[2]);
+
+			int[] Ti = new int[N];
+
+			for (int j = 0; j < N; j++)
+				Ti[j] = Integer.parseInt(line[j + 3]);
+
+			int result = Dancing.howMany(N, S, P, Ti);
+
+			output = output + "Case #" + i + ": " + result + "\n";
+		}
+
+		return output;
+	}
+
+	private static String QualificationRound_C(Vector<String> pInputVector) {
+
+		String output = "";
+
+		int T = Integer.valueOf(pInputVector.get(0));
+
+		for (int i = 1; i <= T; i++) {
+
+			String line[] = pInputVector.get(i).split(" ");
+
+			int A = Integer.parseInt(line[0]);
+			int B = Integer.parseInt(line[1]);
+
+			int result = Recycled.howMany(A, B);
+
+			output = output + "Case #" + i + ": " + result + "\n";
 		}
 
 		return output;
