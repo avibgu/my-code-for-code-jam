@@ -18,8 +18,8 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 
-		String inputFilename = "B-large.in";
-		String outputFilename = "B-large.out";
+		String inputFilename = "C-Large.in";
+		String outputFilename = "C-Large.out";
 
 		String output = "";
 
@@ -42,8 +42,8 @@ public class Main {
 		// ---------------| Place Code Here |-------------------------
 
 		// output = QualificationRound_A(inputVector);
-		output = QualificationRound_B(inputVector);
-		// output = QualificationRound_C(inputVector);
+		// output = QualificationRound_B(inputVector);
+		output = QualificationRound_C(inputVector);
 
 		// -----------------| End of Code |---------------------------
 
@@ -110,10 +110,10 @@ public class Main {
 
 			String line[] = pInputVector.get(i).split(" ");
 
-			double A = Double.parseDouble(line[0]);
-			double B = Double.parseDouble(line[1]);
+			int A = Integer.parseInt(line[0]);
+			int B = Integer.parseInt(line[1]);
 
-			double result = Recycled.howMany(A, B);
+			int result = Recycled.howMany(A, B);
 
 			output = output + "Case #" + i + ": " + result + "\n";
 
