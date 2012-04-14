@@ -116,9 +116,6 @@ public class Main {
 			int result = Recycled.howMany(A, B);
 
 			output = output + "Case #" + i + ": " + result + "\n";
-
-			System.out.print(output);
-			System.out.flush();
 		}
 
 		return output;
