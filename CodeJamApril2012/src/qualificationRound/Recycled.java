@@ -1,25 +1,43 @@
 package qualificationRound;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Recycled {
 
-	public static int howMany(int A, int B){
+	public static final Map<Double, String> map = new HashMap<Double, String>();
+	
+	public static double howMany(double A, double B){
 		
-		int count = 0;
+		double count = 0;
 		
-		for (int i = A; i < B; i++){
+		for (double i = A; i < B; i++){
 			
-			for (int j = i + 1; j <= B; j++){
-		
-				String I = String.valueOf(i);
-				String J = String.valueOf(j);
+			String I = get(i);
+			String II = I + I;
+			
+			for (double j = i + 1; j <= B; j++){
 				
-				String AA = I + I; 
-				
-				if (AA.contains(J))
+				String J = get(j);
+
+				if (II.contains(J))
 					count++;
 			}
 		}
 		
 		return count;
+	}
+
+	private static String get(double key) {
+
+		String value = map.get(key);
+		
+		if (null == value){
+			
+			value = String.valueOf(key);
+			map.put(key, value);
+		}
+		
+		return value;
 	}
 }

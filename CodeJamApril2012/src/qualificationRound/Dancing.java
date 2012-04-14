@@ -18,6 +18,53 @@ public class Dancing {
 	 */
 	public static int howMany(int N, int S, int P, int[] Ti) {
 
-		return 0;
+		if (0 == P)
+			return N;
+
+		int count = 0;
+		int specials = 0;
+
+		for (int t : Ti) {
+
+			if (0 == t)
+				continue;
+			
+			int mod = t % 3;
+			int div = t / 3;
+
+			int max = -1;
+			int maxSpecial = -1;
+
+			switch (mod) {
+
+			case 0:
+				max = div;
+				maxSpecial = div + 1;
+				break;
+
+			case 1:
+				max = div + 1; // same as 'maxSpecial'
+				break;
+
+			case 2:
+				max = div + 1;
+				maxSpecial = div + 2;
+				break;
+			}
+
+			if (max >= P)
+				count++;
+
+			else if (maxSpecial >= P)
+				specials++;
+		}
+
+		if (specials > S)
+			count += S;
+
+		else
+			count += specials;
+
+		return count;
 	}
 }
