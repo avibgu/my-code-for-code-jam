@@ -43,7 +43,10 @@ public class Main {
 
 		// output = QualificationRound_A(inputVector);
 		// output = QualificationRound_B(inputVector);
-		output = QualificationRound_C(inputVector);
+		// output = QualificationRound_C(inputVector);
+
+		output = Round1B_A(inputVector);
+		output = Round1B_B(inputVector);
 
 		// -----------------| End of Code |---------------------------
 
@@ -119,5 +122,15 @@ public class Main {
 		}
 
 		return output;
+	}
+
+	private static String Round1B_A(Vector<String> pInputVector) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private static String Round1B_B(Vector<String> pInputVector) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
