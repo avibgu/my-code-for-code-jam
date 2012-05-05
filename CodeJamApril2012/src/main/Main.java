@@ -18,8 +18,8 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 
-		String inputFilename = "C-Large.in";
-		String outputFilename = "C-Large.out";
+		String inputFilename = "input.in";
+		String outputFilename = "output.out";
 
 		String output = "";
 
